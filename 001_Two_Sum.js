@@ -1,0 +1,64 @@
+// Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+// You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+// You can return the answer in any order.
+
+ 
+
+// Example 1:
+
+// Input: nums = [2,7,11,15], target = 9
+// Output: [0,1]
+// Output: Because nums[0] + nums[1] == 9, we return [0, 1].
+// Example 2:
+
+// Input: nums = [3,2,4], target = 6
+// Output: [1,2]
+// Example 3:
+
+// Input: nums = [3,3], target = 6
+// Output: [0,1]
+ 
+
+// Constraints:
+
+// 2 <= nums.length <= 103
+// -109 <= nums[i] <= 109
+// -109 <= target <= 109
+// Only one valid answer exists.
+
+
+___________________________
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+
+//array of nums 
+// return indices(return i )
+// only two numbers 
+//if numA + numB === target return indices
+/*
+   [2,7,11,15]
+   [3,2,4]
+   [3,3]
+  2 7 11 15
+2 - 9 13 17
+7 - - 18 23
+11- -  - 27
+15- -  -  -
+*/
+
+var twoSum = function(nums, target) {
+    for(let i = 0; i < nums.length; i++){
+        let numOne = nums[i];  //2
+        for(let j= i + 1; j < nums.length; j++){
+            let numTwo = nums[j]; //4
+            if(numOne + numTwo === target)  //yes!
+                 return [i, j]
+        }
+    }
+};
