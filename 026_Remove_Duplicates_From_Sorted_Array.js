@@ -41,7 +41,7 @@
 // /**
 //  * @param {number[]} nums
 //  * @return {number}
- */
+//  */
 // var removeDuplicates = function(nums) {
 //     let index = 1;
 //     for(let i = 0; i < nums.length-1; i++) {  //[1,1,2,2,3,4,5]
