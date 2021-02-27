@@ -30,3 +30,23 @@ var containsDuplicate = function(nums) {
     return false 
     
 };
+
+
+// other solution:
+
+var containsDuplicate = function(nums) {
+    let seen = {};
+    
+     for(let i = 0; i < nums.length; i++){
+         let num = nums[i];
+         
+         if(seen[num] === true) {
+             return true
+         }
+         else {
+             seen[num] = true
+         }
+     }
+     return false 
+     
+ };
