@@ -50,3 +50,22 @@ var containsDuplicate = function(nums) {
      return false 
      
  };
+
+
+//  Set
+ var containsDuplicate = function(nums) {
+    let seen = new Set();
+    
+     for(let i = 0; i < nums.length; i++){
+         let num = nums[i];
+         
+         if(seen.has(num)) {
+             return true
+         }
+         else {
+             seen.add(num)   {"1", "2", "3"}
+         }
+     }
+     return false 
+     
+ };
