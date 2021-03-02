@@ -52,6 +52,35 @@ var containsDuplicate = function(nums) {
  };
 
 
+
+ /**
+ * @param {number[]} nums
+ * @return {number}
+ */
+
+
+var singleNumber = function(nums) {
+    let count = {};
+ 
+  for(let i = 0; i < nums.length; i++){
+      let num = nums[i];
+      
+      if(!count[num]) {
+          count[num] =1
+      }
+      else {
+          count[num] += 1
+      }
+  }
+  for (const [num, value] of Object.entries(count)) {
+if(value === 1) return num;
+}
+
+
+  
+};
+
+
 //  Set
  var containsDuplicate = function(nums) {
     let seen = new Set();
