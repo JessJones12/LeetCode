@@ -1,0 +1,40 @@
+// Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+
+// Follow up: Could you implement a solution with a linear runtime complexity and without using extra memory?
+
+ 
+
+// Example 1:
+
+// Input: nums = [2,2,1]
+// Output: 1
+// Example 2:
+
+// Input: nums = [4,1,2,1,2]
+// Output: 4
+// Example 3:
+
+// Input: nums = [1]
+// Output: 1
+
+//non-empty of integers
+//every element appears twice except for one 
+//is the array sorted?
+//return the one unqiue element in the array 
+
+//first I want to sort the array 
+//next pointer1 and pointer 2 if(pointer1 !== pointer 2 ) return array[i]
+
+// 1,1,2,3
+
+
+var singleNumber = function(nums) {
+    nums = nums.sort();
+     
+     for(let i = 0; i < nums.length; i+= 2){
+         let pointer1 = nums[i]
+         let pointer2 = nums[i + 1]
+         console.log(pointer2)
+        if(pointer1 !== pointer2) return pointer1
+     }
+};

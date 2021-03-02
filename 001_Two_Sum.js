@@ -50,6 +50,11 @@ ___________________________
 7 - - 18 23
 11- -  - 27
 15- -  -  -
+
+"abjdkeba"
+"bjdkeb"
+"bjdkeb"
+"". "a"
 */
 
 var twoSum = function(nums, target) {
