@@ -34,3 +34,20 @@ var maxProfit = function(prices) {
    }
    return profit 
 };
+
+//max profit 
+const maxProfit = function(prices) {
+    //intialize a variable to keep count of the current highest profit
+    let maxProfit = 0;
+    //create a loop to iterate through the prices until the second to last element
+    for (let i = 0; i < prices.length - 1; i++){
+        //the inner loop compares the prices[i] to every future price point to see if there is a higher profit
+        for (let j = i + 1; j < prices.length; j++){
+            let profit = prices[j] - prices[i]
+            if (profit > maxProfit){
+                maxProfit = profit
+            }
+        }
+    }
+    return maxProfit
+};
