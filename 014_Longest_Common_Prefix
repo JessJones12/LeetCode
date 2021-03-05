@@ -25,3 +25,28 @@ var longestCommonPrefix = function(strs) {
     }
     return strs[0];
 };
+
+
+//hortizontal method compare each work next to the next one
+
+//vertical slice methods--> compare all words at once! 
+// prefix = ' '
+//loop through all the characters (char, index)
+    // loop through all the strings
+    // compare if (str[index] === char) if doens't match exit out        //and return prefix 
+
+    var longestCommonPrefix = function(strs) {
+            let prefix = ''
+            if(strs.length === 0) return prefix
+
+            for(let i = 0; i < str[0].length; i++) {
+                let currentChar = strs[0][i];
+
+            for(let j = 0; j < strs.length; J++){
+                if(strs[j][i] !== currentChar) return prefix
+            }
+            prefix = prefix + currentChar
+            }
+            return prefix 
+            };
+    
