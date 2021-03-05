@@ -31,17 +31,61 @@
 //         return nums
 //     };
 
-var moveZeroes = function(nums) {
-    let i = 0; // starting pointer
-    let times = nums.length // total times we do the check
-    while (times > 0) { // while we have some times left
-        if (nums[i] === 0) { // if the value is 0, we remove it
-            nums.splice(i, 1);
-            nums.push(0) // after remove, we push a 0 to the end, the index does not change
-        } else { 
-          i += 1;   // if current value not 0, we increment the pointer by 1
-        }
-        times -= 1 // does not matter we found 0 or not, we need to decrement the total times.
+// var moveZeroes = function(nums) {
+//     let i = 0; // starting pointer
+//     let times = nums.length // total times we do the check
+//     while (times > 0) { // while we have some times left
+//         if (nums[i] === 0) { // if the value is 0, we remove it
+//             nums.splice(i, 1);
+//             nums.push(0) // after remove, we push a 0 to the end, the index does not change
+//         } else { 
+//           i += 1;   // if current value not 0, we increment the pointer by 1
+//         }
+//         times -= 1 // does not matter we found 0 or not, we need to decrement the total times.
+//     }
+//     return nums
+// };
+//                          placeNonZero
+// [1   ,          8,          ,0          ,0 ]
+//                                           ^i
+
+const moveZeros = (nums) => {
+
+let placeNonZero = 0;
+
+for(let i = 0; i < nums.length; i++){
+    if(num[i] !== 0) {
+        nums[placeNonZero] =num[i]
+        placeNonZero++
     }
-    return nums
-};
+}
+for(let i = placeNonZero; i < nums.length ;i++){
+    nums[i]= 0
+}
+return nums 
+}
+
+
+
+
+
+
+
+
+
+
+
+// const moveZeroes = (nums) =>{
+//     let placeNonZeros = 0; 
+
+//     for(let i = 0; i < nums.length; i++){
+//         if(nums[i] !== 0){
+//             nums[placeNonZeros] = nums[i];
+//             placeNonZeros++
+//         }
+//     }
+//     for(let i = placeNonZeros; i < nums.length; i++) {
+//         nums[i] = 0; 
+//     }
+//     return nums;
+// }
