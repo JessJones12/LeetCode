@@ -16,6 +16,13 @@
 // Input: nums = [3,2,4], target = 6
 // Output: [1,2]
 // Example 3:
+// seen = {3: 0, 2: 1, }
+// for loop (i)
+// currentNum = nums[i]
+// neededNum = target - currentNum
+// check if seen[neededNum] !== undefined
+// firstIndex = seen[needNum]
+// return [firstIndex, i]
 
 // Input: nums = [3,3], target = 6
 // Output: [0,1]
@@ -67,3 +74,23 @@ var twoSum = function(nums, target) {
         }
     }
 };
+
+
+
+const findTheIndices = (num, target) =>{
+    let seen = {};  
+
+    for(let i = 0; i < num.length; i++){
+      let currentNum = num[i]; //[7,2, 11, 4]
+
+      neededNum = target - currentNum;  //9-2= 7
+
+      if(seen[neededNum] === undefined){
+              seen[currentNum] = i;  //{7:0} 
+      } else {
+        firstIndex = seen[neededNum]  // {7:0}
+        return [firstIndex, i]   
+      }
+    }
+    return "not found"
+}

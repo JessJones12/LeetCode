@@ -1,0 +1,2 @@
+its better to have time = o (n) with space= o (n) than time o(n^2) with a better
+space of o (1)

@@ -1,0 +1,67 @@
+// Given two strings s and t , write a function to determine if t is an anagram of s.
+
+// Example 1:
+
+// Input: s = "anagram", t = "nagaram"
+// Output: true
+// Example 2:
+
+// Input: s = "rat", t = "car"
+// Output: false
+// Note:
+// You may assume the string contains only lowercase alphabets.
+
+// Follow up:
+// What if the inputs contain unicode characters? How would you adapt your solution to such case?
+
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+
+//two strings = s & T 
+//word formed from mixed up words
+
+// s= "anagram"
+// if seen "a: true
+//t = "nagaram"
+//if current letter in s is in current string of t move on to the next
+//if we go through the entire loop and all letters match return true
+//otherwise when letter isn't found return false 
+//two loops 
+//hash table --> seen true 
+//abc, cba
+//every permutation of the first word. That's inefficient! 
+
+//go through each letter in the first word and compare
+//add letters and counts of the first words and compare to the second word
+
+// "a"
+//a:1  yes! now decrement by 1 so a:0
+//b:1  yes! now decrement by 1 so b:0
+//c:1  yes! now decrement by 1 so c:0 -1(more c's in the second word so return false )
+//
+var isAnagram = function(s, t) {
+    if(s.length !== t.length) {
+        return false
+    } 
+        let letterCount = {};
+        for(let letter of s ) {
+            if(letterCount[letter] === undefined) {
+                letterCount[letter] = 1;
+            } else {
+                letterCount[letter] ++
+            }
+        }
+        for(let letter of t){
+            if(letterCount[letter] === undefined) {
+                return false
+        }
+        if(letterCount[letter] < 1) {
+            return false
+        }
+        letterCount[letter] --
+    }
+        return true;
+    };
