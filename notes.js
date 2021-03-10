@@ -12,7 +12,7 @@
 //r:1--> yes! so now a: 0
 //e:1--> yes! so now e: 0
 //go through the second loop and if we've seen the letter decrement by 1 
-//time: o n(2) loop through twice
+//time: o (n) loop through twice
 //Space: o(1)
 
 var isAnagram = function(s, t) {
@@ -38,3 +38,4 @@ for(let letter of t){
 }
  return true 
 };
+

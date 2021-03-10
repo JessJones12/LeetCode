@@ -59,6 +59,8 @@ for(let i = 0; i < nums.length; i++){
         placeNonZero++
     }
 }
+
+//this makes the rest of the array zeros! 
 for(let i = placeNonZero; i < nums.length ;i++){
     nums[i]= 0
 }
