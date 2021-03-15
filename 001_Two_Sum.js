@@ -94,3 +94,6 @@ const findTheIndices = (num, target) =>{
     }
     return "not found"
 }
+
+
+console.log(findTheIndices([2,7,11,15], 9))

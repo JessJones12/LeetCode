@@ -1,0 +1,56 @@
+/**
+ * @param {number[]} coins
+ * @param {number} amount
+ * @return {number}
+ */
+
+//coins of different amounts
+//total amount
+//if money can't be made up by number of coins return -1 
+//how many coins will it take to make it to 2 
+//what is the fewest number of coins?
+//what is our base case? 0 coins! so we'd need 0 coins
+//dynamic programing to answer this start up to down 
+//tabulation !! Tabulating is a way of processing information or data by putting it in a table
+// DFS with recrusion and caching problems along the way 
+// 11 + 
+//o(n) we have to do deep! 
+//coins 1, 2, 5 <--- coins amount ---> 11
+//create a table that represents all amounts that can arise
+//amount  0 1 2 3 4 5 6 7 8 9 10 11 
+//we want to keep a running table 
+
+// 1, 2, 5 
+
+// coins   0 1 2 3 4 5 6 7 8 9 10 11
+// amount  0 1 2 3 4 5 6 7 8 9 10 11 
+
+// is the coin <= amount (if the coin is more than the amount 
+//                        than it can't equal the amount! )
+//     if it is! check the table and see what the min value is 
+
+// amount - coin = idx (check the index of that in table)
+//  2-2 = 0; 
+// create potential amount check at index of zero + 1
+
+// potentialAmount = table [idx] + 1  //1
+//           table[i] = min(table[i], potentialAmount )            
+      
+
+
+var coinChange = function(coins, amount) {
+    const table = new Array(amount + 1).fill(Infinity) //for zero 
+    table[0] = 0;
+    
+    
+    for(let coin of coins){
+        for(let i = 0; i < table.length; i ++){ //i reps the amount
+            if(coin <= i){
+                let idx= i - coin; 
+                let potentialAmount = table[idx] + 1
+                table[i] = Math.min(potentialAmount, table[i]);
+            }
+        }
+    }
+    return table[table.length -1] === Infinity ? -1: table[table.length-1]
+};

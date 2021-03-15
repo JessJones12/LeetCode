@@ -49,4 +49,18 @@ var longestCommonPrefix = function(strs) {
             }
             return prefix 
             };
-    
+
+
+            var longestCommonPrefix = function(strs) {
+                if(strs.length === 0) return "";
+                   
+                   for(let i =0; i < strs[0].length; i++) {  // [F, L , O , W, E , R]
+                       let currentLetter = strs[0][i]; // "F"
+                       
+                       for(let word of strs){  //["flower","flow","flight"]  //flower //flow
+                            if(word[i] !== currentLetter) return word.slice(0, i)
+                        }
+                   }
+                   return strs[0]
+               };
+               console.log(longestPreFix(["flower","flow","flight"]))
