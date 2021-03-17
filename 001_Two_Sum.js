@@ -97,3 +97,7 @@ const findTheIndices = (num, target) =>{
 
 
 console.log(findTheIndices([2,7,11,15], 9))
+
+
+// 3 sum!! 
+//nums can only be used once 

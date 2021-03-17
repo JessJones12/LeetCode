@@ -99,3 +99,47 @@ class RandomizedSet {
 //         return array[index]
 //     }
 // }
+
+class RandomizedSet {
+    constructor () {
+        this.nums = [];
+        this.indexByNum = {};
+    }
+    
+    insert(val){
+       if (this.indexByNum[val] !== undefined) {
+           return false
+       } else {
+           this.nums.push(val)
+           this.indexByNum[val] = this.nums.length - 1
+           
+           return true
+       }
+    }
+    
+    remove(val){
+        if (this.indexByNum[val] === undefined) {
+            return false
+        }
+        if (this.nums.length === 1) {
+            this.nums.pop()
+            delete this.indexByNum[val]
+            return true
+        }
+        
+        let valIndex = this.indexByNum[val] // 2
+        let lastValue = this.nums[this.nums.length - 1] // 12
+        this.nums[valIndex] = lastValue // this.nums[2] = 12
+        this.nums.pop()
+        
+        this.indexByNum[lastValue] = valIndex
+        delete this.indexByNum[val]
+        return true
+        
+    }
+    
+    getRandom(){
+        let index = Math.floor(Math.random() * this.nums.length)
+        return this.nums[index]
+    }
+}

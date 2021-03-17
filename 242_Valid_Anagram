@@ -57,11 +57,11 @@ var isAnagram = function(s, t) {
         for(let letter of t){
             if(letterCount[letter] === undefined) {
                 return false
+            }
+            if(letterCount[letter] < 1) {
+                return false
+            }
+            letterCount[letter] --
         }
-        if(letterCount[letter] < 1) {
-            return false
-        }
-        letterCount[letter] --
-    }
         return true;
     };
