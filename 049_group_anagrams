@@ -1,0 +1,85 @@
+/**
+ * @param {string[]} strs
+ * @return {string[][]}
+ */
+//loop through the array 
+//store each letter of each string into 
+
+// Input: strs = ["eat","tea","tan","ate","nat","bat"]
+// Output: [["bat"],["nat","tan"],["ate","Eat","tea"]]
+//sort the words to get the keys:
+//Eat --> aet
+//tea --> aet
+//tan --> ant
+// ate --> eat
+//nat --> ant
+
+//key --> sorted letters 
+//value --> input words 
+//{aet: [Eat, tea]}
+//{ant: [tan, nat]}
+//object.value(group)
+//[[eat, tea],[tan, nat]]
+
+
+// time: o(n * wlogw) # of words * sorting each word
+// space: o(n * w) # of words * char in each word 
+
+
+
+
+
+
+function groupAnagrams(strs) {
+
+    let groups = {};
+    let alphabet = "abcdefghijklmnopqrstuvwxyz"
+    
+    for(let s of strs){
+        let letterCounts = new Array(26).fill(0)
+        for (let char of s) {
+            let index = alphabet.indexOf(char)
+            letterCounts[index] += 1
+        }
+        let key = letterCounts.join('-')
+        
+        // let sortedString = s.split("").sort().join("");
+        
+        if(key in groups){
+            groups[key].push(s)
+        } else {
+            groups[key] = [s]
+        }
+    }
+
+  return Object.values(groups)
+};
+
+
+
+
+
+
+
+
+
+
+
+var groupAnagrams = function(strs) {
+//key(sorted string) : value(array sorted words)
+    
+    let groups = {};
+    
+    
+    for(let str of strs){
+        let sortedStr = str.split("").sort().join("")  //"aet"
+        
+        if(sortedStr in groups){  //groups[sortedStr] !== undefined
+            groups[sortedStr].push(str)  //{aet:[eat]}
+        } else {
+            groups[sortedStr] = [str]  //{aet:[eat]}
+        }
+    }
+    console.log(groups)
+    return Object.values(groups)
+};

@@ -100,6 +100,13 @@ class RandomizedSet {
 //     }
 // }
 
+
+//call get random again we have to creat a new array 
+//a regular set aka hash could work but then you get to random and then it's o(n) to turn 
+it into an array using array.From to create a new array and store nums in an array 
+
+
+
 class RandomizedSet {
     constructor () {
         this.nums = [];

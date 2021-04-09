@@ -14,6 +14,32 @@
 // Follow up:
 // What if the inputs contain unicode characters? How would you adapt your solution to such case?
 
+//what if chars contains other than chars?
+//what if string is empty?
+//will inputs always be valid?
+
+
+how many letters are there in s?
+ anagram
+ 
+ counts: 
+ a: 3
+ n: 1
+ g: 1
+ r: 1
+ m: 1
+ 
+ does t have all these letters from our count?
+ nagaram
+ 
+ */
+//loop through the first word //put in a hash
+//loop through the second word 
+//decide if we have seen that character before
+//if yes decrement it 0 //if they are all 0 return true 
+//if no leave it as 1 //return false 
+// if another letter of the same and it goes -1 return false 
+
 /**
  * @param {string} s
  * @param {string} t
@@ -64,4 +90,37 @@ var isAnagram = function(s, t) {
             letterCount[letter] --
         }
         return true;
+    };
+
+
+    var isAnagram = function(s, t) {
+        if(s.length !== t.length){
+            return false;
+        }
+        
+        let letter = {};
+        
+        for(let i = 0; i < s.length;i++){
+            let currentEle = s[i];
+            
+            if(letter[currentEle] === undefined) {
+                letter[currentEle] =1
+            } else {
+                letter[currentEle] +=1
+            }
+        }
+        
+        for(let i = 0; i < t.length; i++){
+            let currentEle = t[i];
+            
+        if(letter[currentEle]=== undefined){
+            return false
+        }
+            if(letter[currentEle] < 1){
+                return false 
+            }
+            letter[currentEle] --
+        }
+        return true;
+    
     };

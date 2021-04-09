@@ -31,6 +31,15 @@ Note: The length of each dimension in the given grid does not exceed 50.
 //step 1:  //loop through the grid 
 
 
+//1 = islands
+//0 = water
+// return 0;
+//only land and no water?
+//how big is the grid?
+//if no island return 0?
+//will input be a valid 2d grid?
+//okay to change the grid?
+
 var maxAreaOfIsland = function(grid) {
     const r = grid.length
     const c = grid[0].length
@@ -59,4 +68,87 @@ var maxAreaOfIsland = function(grid) {
         
     }
     
+}
+
+
+
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+//loop through the grid (nested loop)
+//if we see a 1 
+//helper function to search around the island
+//add it to the max
+//count
+//max
+//return max 
+//return 0 if no islands === length = 0; 
+
+
+var maxAreaOfIsland = function(grid) {
+    let count = 0; 
+    let max = 0;
+    
+    for(let i = 0; i < grid.length; i++){
+        for(let j = 0; j < grid[i]; j++){
+            
+            findMaxIsland(i, j);
+            max = Math.max(count, max);
+            count = 0;
+        }
+    }
+    return max;
+    
+    const findMaxIsland = (i, j) =>{
+    if(i < 0 || i >= grid.length || j < 0 || j >= grid.length || grid[i][j] === 0) return 
+        
+        count ++
+        grid[i][j] = 0
+        
+             findMaxIsland(i +1, j)
+            findMaxIsland(i -1, j)
+            findMaxIsland(i, j+1)
+            findMaxIsland(i, j-1)
+}
+}
+
+
+
+
+
+
+//If no island return 0;
+//return max # 
+//must be connected 4 directionally 
+//step 1:  //loop through the grid 
+
+
+var maxAreaOfIsland = function(grid) {
+    let count = 0;
+    let max = 0; 
+
+for(let i = 0; i < grid.length;i++){
+    for(let j = 0; j < grid[i].length;j++){
+        findMaxIsland(i, j);  //[0,2]
+        max = Math.max(count, max );  //(6,4)---> 6
+        count = 0;         //4,  //6
+    }
+}
+return max 
+
+function findMaxIsland(i, j){
+    if(i < 0 || i >= grid.length || j < 0 || j >= grid[i].length || grid[i][j] === 0) 
+        return 0; 
+        
+        count++;
+        grid[i][j] = 0;
+        
+            
+        findMaxIsland(i +1, j)
+        findMaxIsland(i -1, j)
+        findMaxIsland(i, j+1)
+        findMaxIsland(i, j-1)
+    
+}
 }

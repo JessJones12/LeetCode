@@ -1,0 +1,61 @@
+/*
+transactions:
+name, time, amount, city
+return invalid transactions:
+- amount >= 1000
+- last transaction: time <= 60 min and location is differnt
+input:
+  alice, 20, 1000, mtv
+  alice, 50, 100, beijing
+  alice, 111, 300, nyc
+  alice, 120, 200, nyc
+  alice, 130, 200, sf
+  bob, 50, 1200, mtv
+output:
+bob, 50, 1200, mtv
+alice, 20, 1000, mtv
+alice, 50, 100, beijing
+invalidTransactions = [
+  [alice, 20, 1000, mtv],
+  [alice, 50, 100, beijing],
+  [alice, 120, 200, nyc],
+  [alice, 130, 200, sf],
+  [bob, 50, 1200, mtv],
+]
+lastTransactionByName = {
+  alice: [alice, 50, 100, beijing]
+}
+invalid = [
+  [alice, 20, 1000, mtv],
+  [alice, 50, 100, beijing], 
+  [alice, 20, 1000, mtv],
+]
+*/
+function invalidTransactions(transactions) {
+  let invalid = new Set()
+  let lastTransactionByName = {}
+  for (let transaction of transactions) {
+    let [name, time, amount, city] = transaction
+    if (amount >= 1000) {
+      invalid.add(transaction) 
+    } else if (name in lastTransactionByName) {
+      let [lastName, lastTime, lastAmount, lastCity] = lastTransactionByName[name]
+      if (time - lastTime <= 60 && lastCity !== city) {
+        invalid.add(transaction)
+        invalid.add(lastTransactionByName[name])
+      }
+    }
+    console.log(invalid)
+    lastTransactionByName[name] = transaction
+  }
+  return Array.from(invalid)
+}
+let transactions = [
+  ["alice", 20, 1000, "mtv"],
+  ["alice", 50, 100, "beijing"],
+  ["bob", 50, 1200, "mtv"],
+  ["alice", 111, 300, "nyc"],
+  ["alice", 120, 200, "nyc"],
+  ["alice", 130, 200, "sf"],
+]
+console.log(invalidTransactions(transactions))

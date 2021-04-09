@@ -1,0 +1,33 @@
+valid - every opening has a closing
+"()" -> true
+"())" -> false
+"(())" -> true
+oc = 0
+"(b)" -> true
+"(()a)" -> true
+"(()" -> false
+oc = 1
+openingCount = 1
+runtime: O(n) where n is num chars in string
+space: O(1)
+*/
+function isValidSingle(string) {
+   let openingCount = 0
+   for (let char of string) {
+    if (char === '(') {
+       openingCount++
+     } else if (char === ')') {
+        if (openingCount === 0) {
+          return false 
+        } else {
+          openingCount--
+        }
+     }
+   }
+   return openingCount === 0;
+   // if (openingCount === 0) {
+   //   return true 
+   // } else {
+   //   return false 
+   // }
+}

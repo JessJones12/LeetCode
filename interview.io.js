@@ -77,12 +77,12 @@ const mineSweeper = (bombs, rows, cols) => {
     
     //if there is a bomb then add a 1 then call func to add a 1
     const markSeen = (grid, row, col)=> {
-   if (row < 0 || row >= grid.length || col < 0 || col >= grid[row].length || grid[row][col] === -1) {
-    return;
-  }
-  grid[row][col] += 1
- 
-}
+      if (row < 0 || row >= grid.length || col < 0 || col >= grid[row].length || grid[row][col] === -1) {
+        return;
+      }
+      grid[row][col] += 1
+    
+    }
     
     markSeen(grid, row+ 1, col)
     markSeen(grid, row- 1, col)

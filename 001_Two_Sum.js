@@ -101,3 +101,28 @@ console.log(findTheIndices([2,7,11,15], 9))
 
 // 3 sum!! 
 //nums can only be used once 
+
+
+
+
+
+function twoSum(num, target){
+    
+  let seen = {};
+  
+  for(let i = 0; i < num.length; i++){  // [2,7,11,15]
+      let currentNum = num[i];
+      
+      let numNeeded = target - currentnum; // 9-7 = 2
+      
+      if(seen[numNeeded] === undefined){  // 
+          seen[currentNum] = i  // {2:0} //
+      } else {
+          firstIndex = seen[numNeeded];  //{2:0}
+          return [firstIndex, i]//0,1
+      }
+  }
+
+  
+
+}

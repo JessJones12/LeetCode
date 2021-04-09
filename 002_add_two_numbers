@@ -1,0 +1,78 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+
+
+  class ListNode {
+    constructor(val, next) {
+        this.val = (val===undefined ? 0 : val)
+        this.next = (next===undefined ? null : next)
+    }
+ }
+
+////edge cases!!!!!!
+//if one is shorter than another 
+//2->4 (42)
+//2
+//4->4
+
+//9->9
+//1
+//001
+
+
+// 2->4->3 (342)
+    // L1
+// 5->6->4 (465)
+    // L2
+
+// x->7->0->8
+
+
+
+var addTwoNumbers = function(l1, l2) {
+
+    let prehead = l3 = new ListNode();
+    
+    let carry = 0;
+    let value = 0;
+    
+    while(l1 !== null || l2 !== null || carry > 0) {
+        let total = 0
+        total += carry
+        if(l1 !== null){
+            total += l1.val
+            l1 = l1.next;
+        }
+        if(l2 !== null){
+            total += l2.val
+            l2 = l2.next
+        }
+        
+        value = total % 10;
+        
+        let newNode = new ListNode(value);
+        l3.next = newNode
+        l3 = newNode;
+        
+        if (total >= 10) {
+            carry = 1
+        } else {
+            carry = 0
+        }
+        // total = Math.floor(total / 10)
+         // console.log(total)
+    }
+    
+    return prehead.next 
+};
+

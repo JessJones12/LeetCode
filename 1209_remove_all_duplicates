@@ -1,0 +1,24 @@
+
+var removeDuplicates = function(s, k) {
+
+    let letter = [];
+    let count =  [];
+    
+    for(let char of s){
+        if(letter.length >0 && letter[letter.length -1] === char){
+            count[count.length -1]++
+            if(count[count.length -1] === k){
+                letter.pop();
+                count.pop()
+            }
+        } else {
+            letter.push(char)
+            count.push(1)
+        }
+    }
+    ans = "";
+    for(let i = 0; i < letter.length; i++){
+        ans += letter[i].repeat(count[i])
+    }
+    return ans
+}

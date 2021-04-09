@@ -1,0 +1,91 @@
+// let nums = [2,7,11,15]
+// let target = 9
+// not sorted
+// O(n) time
+// O(n) space
+// 2000
+// 1000
+// 500
+// 250
+// 125
+// 75
+// 37
+// 17
+// 9
+// 5
+// 3
+// 2
+// 1 
+// sorted
+// O(n) time
+// O(1) space
+// [2,7,11,15]
+//  l r
+// l + r = 2 + 11 = 9
+// target = 9
+/*
+-4, -1, -1, 0, 1, 2
+     i      lo hi          
+runtime:
+sorting - O(nlogn)
+nested - O(n^2)
+  for loop - O(n)
+      lo hi - O(n)
+space:
+O(1)
+target = 0
+i = -1
+sum = 1
+lo + hi = 0 + 2
+[[-1, -1, 2], [-1, 1, 2]]
+*/
+var threeSum = function(nums, target = 0) {
+  nums.sort((a,b) => a - b)
+  let triplets = []
+  for (let i = 0; i < nums.length - 2; i++) {
+    let lo = i + 1
+    let hi = nums.length - 1
+    while (lo < hi) {
+      let total = nums[i] + nums[lo] + nums[hi]
+      if (total === target) {
+        let values = [nums[i], nums[lo], nums[hi]]
+        triplets.push(values)
+        // if nums are not unique, skip if next nums if same
+        //---
+        while (nums[lo+1] === nums[lo]) {
+          lo++
+        }
+        while (nums[hi-1] === nums[hi]) {
+          hi-- 
+        }
+        //-----
+        lo++
+        hi--
+      } else if (total < target) {
+        lo++ 
+      } else {
+        hi-- 
+      }
+    }
+    // if nums are not unique, skip if next nums if same
+    //----
+    while (nums[i+1] === nums[i]) {
+      i++
+    }
+    //-----
+  }
+  return triplets  
+};
+// [1, 1, 4, 4, 4, 4]
+ //       i. 
+ // hi             lo
+let nums = [-1,-1,0,1,2,-4]
+let target = 2
+//      i    lo                hi
+console.log(threeSum(nums, target))
+/*               i  lo     hi
+total = -4 + -1 + 2 = -3
+target = 0 
+lo = 2
+hi = 5
+*/

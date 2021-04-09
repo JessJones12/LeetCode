@@ -1,0 +1,68 @@
+checkIn(id, stationName, time)
+checkOut(id, stationName, time)
+getAverageTime(startStation, endStation)
+checkIn(1, "NYC", 20)
+checkIn(3, "NYC", 50)
+checkOut(1, "BK", 40)
+getAverageTime("NYC", "BK") = 40 - 20 = 20
+checkIn(2, "NYC", 20)
+checkout(2, "BK", 50)
+"A" to "B": person 1 took 20, person 2 took 30 minutes
+getAverageTime("NYC", "BK") = (20+30)/2 = 25
+Call to getAverageTime is always valid.
+in-memory or in database?
+currentTrips = { // key- id value- [station, time]
+    3: ["BK", 50]
+    5: ["NYC", 80]
+    4: ["NYC", 90]
+}
+checkout(3, "NYC",70)
+checkout(4, "BK", 100)
+"NYC-BK"
+30+20+10
+journeyData = {  // key- "stationA-stationB" value- [total_time, total_people]
+    "NYC-BK": [60, 3],
+    "BK-NYC": [20, 1]
+}
+average - total time / total people
+50 / 2 = 25
+*/
+class UndergroundSystem {
+    constructor() {
+        this.checkInData = {}
+        this.journeyData = {}
+    }
+    checkIn(id, startStation, time) {
+//        console.log('check in', id, startStation, time)
+        this.checkInData[id] = [startStation, time]
+        console.log(this.checkInData)
+    }
+    checkOut(id, endStation, endTime) { // 3, "NYC", 70
+//        console.log('check out', id, endStation, endTime)
+        let [startStation, startTime] = this.checkInData[id] // startStation = "BK", startTime = 50
+        delete this.checkInData[id]
+//        let value = this.checkInData[id]
+//        let startStation = value[0]
+//        let startTime = value[1]
+        let total = endTime - startTime // 70 - 50 = 20
+        let key = `${startStation}-${endStation}` //[startStation, endStation]
+        if (key in this.journeyData) {
+            this.journeyData[key][0] += total
+            this.journeyData[key][1] += 1
+        } else {
+            this.journeyData[key] = [total, 1]
+        }
+  //      console.log(this.checkInData)
+   //     console.log(this.journeyData)
+    }
+    getAverageTime(startStation, endStation) {
+//        console.log('getAverageTime')
+//        console.log(this.journeyData)
+        let key = `${startStation}-${endStation}`
+        if (this.journeyData[key] === undefined) {
+            return "no trip data"
+        }
+        let [totalTime, totalPeople] = this.journeyData[key]
+        return totalTime / totalPeople
+    }
+}
